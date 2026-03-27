@@ -32,19 +32,46 @@
     window.__lenis = lenis;
   }
 
+  // Initialize Lenis smooth scroll globally
+  if (typeof Lenis !== 'undefined') {
+    lenis = new Lenis({
+      duration: 0.75,
+      easing: function(t) { return 1 - Math.pow(1 - t, 3); }
+    });
+  }
+
   // ─────────────────────────────────────────────
   // 2. CURSOR SETUP (No RAF here — driven by master loop)
   // ─────────────────────────────────────────────
-  dotEl  = document.getElementById('cursor-dot');
+  
+  // The most bulletproof desktop check that avoids Windows hybrid false-negatives:
+  var isDesktop = window.innerWidth >= 1024;
+
+  // Always grab/create the cursor elements
+  dotEl = document.getElementById('cursor-dot');
+  if (!dotEl) {
+    dotEl = document.createElement('div');
+    dotEl.id = 'cursor-dot';
+    document.body.appendChild(dotEl);
+  }
+
   ringEl = document.getElementById('cursor-ring');
+  if (!ringEl) {
+    ringEl = document.createElement('div');
+    ringEl.id = 'cursor-ring';
+    document.body.appendChild(ringEl);
+  }
 
-  var useCustomCursor = dotEl && ringEl &&
-      window.matchMedia('(pointer: fine)').matches &&
-      !('ontouchstart' in window);
+  var useCustomCursor = isDesktop;
 
-  if (!useCustomCursor) {
-    if (dotEl)  dotEl.style.display  = 'none';
-    if (ringEl) ringEl.style.display = 'none';
+  if (!isDesktop) {
+    // Mobile/tablet — hide the custom cursor elements
+    dotEl.style.display  = 'none';
+    ringEl.style.display = 'none';
+  } else {
+    // Ensure they are visible on desktop
+    dotEl.style.display  = 'block';
+    ringEl.style.display = 'block';
   }
 
   // Track raw mouse position (lightweight, no RAF)
@@ -57,20 +84,99 @@
     }
   }, { passive: true });
 
-  // Hover expand ring
+  // Hover expand ring (handled via class for better transition)
   if (useCustomCursor) {
-    document.querySelectorAll('a, button').forEach(function (el) {
-      el.addEventListener('mouseenter', function () {
-        if (ringEl) { ringEl.style.width = '54px'; ringEl.style.height = '54px'; }
-      });
-      el.addEventListener('mouseleave', function () {
-        if (ringEl) { ringEl.style.width = '36px'; ringEl.style.height = '36px'; }
-      });
+    document.addEventListener('mouseover', function (e) {
+      if (e.target.closest('a, button, .nav-icon, input, textarea, .dot, .collection-card')) {
+        if (ringEl) ringEl.classList.add('hover-interactive');
+      }
+    });
+    document.addEventListener('mouseout', function (e) {
+      if (e.target.closest('a, button, .nav-icon, input, textarea, .dot, .collection-card')) {
+        if (ringEl) ringEl.classList.remove('hover-interactive');
+      }
     });
   }
 
   // ─────────────────────────────────────────────
-  // 3. PARTICLES SETUP (canvas only, no loop here)
+  // 3. CANVAS CURSOR TRAIL (gold thread, on all pages)
+  // ─────────────────────────────────────────────
+  var trailCanvas, trailCtx, trailLines = [], trailPos, colorPhase = 0;
+
+  if (isDesktop) {
+    trailCanvas = document.createElement('canvas');
+    trailCanvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:9997;';
+    document.body.appendChild(trailCanvas);
+    trailCtx = trailCanvas.getContext('2d');
+    trailPos = { x: mouseX, y: mouseY };
+
+    function TrailNode() { this.x = 0; this.y = 0; this.vx = 0; this.vy = 0; }
+
+    function TrailLine(spring) {
+      this.spring = spring + 0.1 * Math.random() - 0.02;
+      this.friction = 0.5 + 0.01 * Math.random() - 0.002;
+      this.nodes = [];
+      for (var n = 0; n < 28; n++) {
+        var nd = new TrailNode();
+        nd.x = trailPos.x; nd.y = trailPos.y;
+        this.nodes.push(nd);
+      }
+    }
+
+    TrailLine.prototype.update = function () {
+      var e = this.spring, t = this.nodes[0];
+      t.vx += (trailPos.x - t.x) * e; t.vy += (trailPos.y - t.y) * e;
+      for (var i = 0; i < this.nodes.length; i++) {
+        t = this.nodes[i];
+        if (i > 0) {
+          var n = this.nodes[i - 1];
+          t.vx += (n.x - t.x) * e; t.vy += (n.y - t.y) * e;
+          t.vx += n.vx * 0.25; t.vy += n.vy * 0.25;
+        }
+        t.vx *= this.friction; t.vy *= this.friction;
+        t.x += t.vx; t.y += t.vy; e *= 0.98;
+      }
+    };
+
+    TrailLine.prototype.draw = function () {
+      var a = this.nodes[0].x, b = this.nodes[0].y;
+      trailCtx.beginPath(); trailCtx.moveTo(a, b);
+      for (var i = 1; i < this.nodes.length - 2; i++) {
+        var e = this.nodes[i], f = this.nodes[i + 1];
+        trailCtx.quadraticCurveTo(e.x, e.y, (e.x + f.x) * 0.5, (e.y + f.y) * 0.5);
+      }
+      var e2 = this.nodes[this.nodes.length - 2], f2 = this.nodes[this.nodes.length - 1];
+      trailCtx.quadraticCurveTo(e2.x, e2.y, f2.x, f2.y);
+      trailCtx.stroke(); trailCtx.closePath();
+    };
+
+    for (var t = 0; t < 10; t++) {
+      trailLines.push(new TrailLine(0.4 + (t / 10) * 0.025));
+    }
+
+    document.addEventListener('mousemove', function (ev) {
+      trailPos.x = ev.clientX; trailPos.y = ev.clientY;
+    }, { passive: true });
+
+    function resizeTrailCanvas() {
+      trailCanvas.width  = window.innerWidth;
+      trailCanvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', function () {
+      clearTimeout(window._trailTimer);
+      window._trailTimer = setTimeout(resizeTrailCanvas, 150);
+    }, { passive: true });
+    resizeTrailCanvas();
+  }
+
+  // ─────────────────────────────────────────────
+  // 4-a. RITUAL STEP OBSERVER (Bulletproof frame-by-frame center distance)
+  // ─────────────────────────────────────────────
+  var ritualSteps = Array.from(document.querySelectorAll('.ritual-step'));
+  var currentActiveStep = null;
+
+  // ─────────────────────────────────────────────
+  // 4-b. PARTICLES SETUP (canvas only, no loop here)
   // ─────────────────────────────────────────────
   bgCanvas = document.createElement('canvas');
   bgCanvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;pointer-events:none;z-index:0;';
@@ -136,6 +242,45 @@
         if (p.y < 0) p.y = bgCanvas.height;
       }
       bgCtx.globalAlpha = 1;
+    }
+
+    // E) Ritual step tracker — pick the step whose center is closest to viewport center
+    if (!ritualSteps || !ritualSteps.length) {
+      ritualSteps = Array.from(document.querySelectorAll('.ritual-step'));
+    }
+    if (ritualSteps && ritualSteps.length) {
+      var midY = window.innerHeight / 2;
+      var closest = null, closestDist = Infinity;
+      for (var s = 0; s < ritualSteps.length; s++) {
+        var rect = ritualSteps[s].getBoundingClientRect();
+        var dist = Math.abs((rect.top + rect.height / 2) - midY);
+        if (dist < closestDist) { closestDist = dist; closest = ritualSteps[s]; }
+      }
+      if (closest && closest !== currentActiveStep) {
+        currentActiveStep = closest;
+        var activeNum = closest.getAttribute('data-step');
+        var bgs = document.querySelectorAll('.ritual-bg');
+        if (bgs.length) {
+          bgs.forEach(function (bg) { bg.classList.remove('active'); });
+          var activeBg = document.getElementById('ritual-bg-' + activeNum);
+          if (activeBg) activeBg.classList.add('active');
+        }
+      }
+    }
+
+    // D) Canvas cursor trail (gold thread — desktop only)
+    if (trailCtx && trailLines.length) {
+      trailCtx.globalCompositeOperation = 'source-over';
+      trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+      trailCtx.globalCompositeOperation = 'lighter';
+      colorPhase += 0.005;
+      var hue = 39 + Math.sin(colorPhase) * 7;
+      trailCtx.strokeStyle = 'hsla(' + hue + ',55%,52%,0.18)';
+      trailCtx.lineWidth = 1.5;
+      for (var j = 0; j < trailLines.length; j++) {
+        trailLines[j].update();
+        trailLines[j].draw();
+      }
     }
 
     requestAnimationFrame(masterTick);

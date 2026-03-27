@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JK Luxury Scent</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=4">
 </head>
 <body>
   <!-- Preloader -->
@@ -225,42 +225,35 @@
     </div>
   </section>
 
-  <!-- The Ritual Section -->
-  <section class="ritual-section" id="ritual">
-    <div class="ritual-left">
-      <img loading="lazy" src="exgif-exports/gifs/musk-float.gif" class="ritual-overlay-gif" alt="Gold Particles Overlay">
+  <section class="ritual-section" id="ritual" style="background-color: var(--obsidian); display: flex; flex-direction: column; align-items: center; padding: 100px 0;">
       
-      <img loading="lazy" src="01-whisk-originals/note-oud.png" class="ritual-bg active" id="ritual-bg-1" alt="Sourcing The Rare">
-      <img loading="lazy" src="01-whisk-originals/note-rose.png" class="ritual-bg" id="ritual-bg-2" alt="The Master Blend">
-      <img loading="lazy" src="01-whisk-originals/note-musk.png" class="ritual-bg" id="ritual-bg-3" alt="Aging In Darkness">
-      <img loading="lazy" src="01-whisk-originals/note-amber.png" class="ritual-bg" id="ritual-bg-4" alt="The Final Vessel">
-    </div>
-
-    <div class="ritual-right">
-      <div class="ritual-step" data-step="1">
-        <span class="step-num text-gold-dust">01</span>
-        <h2 class="step-headline reveal">SOURCING THE RARE</h2>
-        <p class="step-desc reveal">Each ingredient is ethically sourced from the world's most remote regions — oud from Southeast Asia, roses from Grasse, musk from the Himalayan highlands.</p>
+      <!-- Step 1 Content -->
+      <div class="ritual-step" data-step="1" style="width: 100%; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+        <span style="color: var(--gold-dust); letter-spacing: 11px; font-size: 11px; font-family: 'Jost', sans-serif; text-transform: uppercase; margin-bottom: 24px; display: block;">01 / Sourcing The Rare</span>
+        <h2 class="reveal" style="font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; margin: 0 0 30px 0; color: var(--ivory-smoke); line-height: 1.1; text-transform: uppercase;">Sourcing The Rare</h2>
+        <p class="step-desc reveal" style="max-width: 600px; line-height: 1.8; font-size: 1.1rem; color: var(--ivory-smoke); opacity: 0.85;">Each ingredient is ethically sourced from the world's most remote regions — oud from Southeast Asia, roses from Grasse, musk from the Himalayan highlands.</p>
       </div>
 
-      <div class="ritual-step" data-step="2">
-        <span class="step-num text-gold-dust">02 / THE MASTER BLEND</span>
-        <h2 class="step-headline reveal">THE MASTER BLEND</h2>
-        <p class="step-desc reveal">Master perfumers combine these raw elements in precise, guarded ratios, balancing the bold intensity with subtle, delicate layers.</p>
+      <!-- Step 2 Content -->
+      <div class="ritual-step" data-step="2" style="width: 100%; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+        <span style="color: var(--gold-dust); letter-spacing: 11px; font-size: 11px; font-family: 'Jost', sans-serif; text-transform: uppercase; margin-bottom: 24px; display: block;">02 / The Master Blend</span>
+        <h2 class="reveal" style="font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; margin: 0 0 30px 0; color: var(--ivory-smoke); line-height: 1.1; text-transform: uppercase;">The Master Blend</h2>
+        <p class="step-desc reveal" style="max-width: 600px; line-height: 1.8; font-size: 1.1rem; color: var(--ivory-smoke); opacity: 0.85;">Master perfumers combine these raw elements in precise, guarded ratios, balancing the bold intensity with subtle, delicate layers.</p>
       </div>
 
-      <div class="ritual-step" data-step="3">
-        <span class="step-num text-gold-dust">03 / AGING IN DARKNESS</span>
-        <h2 class="step-headline reveal">AGING IN DARKNESS</h2>
-        <p class="step-desc reveal">The blend is left to mature in absolute darkness, allowing the diverse notes to intertwine and develop their full, rich character.</p>
+      <!-- Step 3 Content -->
+      <div class="ritual-step" data-step="3" style="width: 100%; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+        <span style="color: var(--gold-dust); letter-spacing: 11px; font-size: 11px; font-family: 'Jost', sans-serif; text-transform: uppercase; margin-bottom: 24px; display: block;">03 / Aging In Darkness</span>
+        <h2 class="reveal" style="font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; margin: 0 0 30px 0; color: var(--ivory-smoke); line-height: 1.1; text-transform: uppercase;">Aging In Darkness</h2>
+        <p class="step-desc reveal" style="max-width: 600px; line-height: 1.8; font-size: 1.1rem; color: var(--ivory-smoke); opacity: 0.85;">The blend is left to mature in absolute darkness, allowing the diverse notes to intertwine and develop their full, rich character.</p>
       </div>
 
-      <div class="ritual-step" data-step="4">
-        <span class="step-num text-gold-dust">04 / THE FINAL VESSEL</span>
-        <h2 class="step-headline reveal">THE FINAL VESSEL</h2>
-        <p class="step-desc reveal">Captured in our signature obsidian glass, each bottle perfectly preserves the liquid gold within, ready for its unveiling.</p>
+      <!-- Step 4 Content -->
+      <div class="ritual-step" data-step="4" style="width: 100%; min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+        <span style="color: var(--gold-dust); letter-spacing: 11px; font-size: 11px; font-family: 'Jost', sans-serif; text-transform: uppercase; margin-bottom: 24px; display: block;">04 / The Final Vessel</span>
+        <h2 class="reveal" style="font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; margin: 0 0 30px 0; color: var(--ivory-smoke); line-height: 1.1; text-transform: uppercase;">The Final Vessel</h2>
+        <p class="step-desc reveal" style="max-width: 600px; line-height: 1.8; font-size: 1.1rem; color: var(--ivory-smoke); opacity: 0.85;">Captured in our signature obsidian glass, each bottle perfectly preserves the liquid gold within, ready for its unveiling.</p>
       </div>
-    </div>
   </section>
 
   <!-- Testimonials Section -->
@@ -460,27 +453,7 @@
       }
     });
 
-    // Ritual scroll observer
-    const ritualObserverOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.5
-    };
-
-    const ritualObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const step = entry.target.getAttribute('data-step');
-          document.querySelectorAll('.ritual-bg').forEach(bg => bg.classList.remove('active'));
-          const activeImg = document.getElementById(`ritual-bg-${step}`);
-          if (activeImg) activeImg.classList.add('active');
-        }
-      });
-    }, ritualObserverOptions);
-
-    document.querySelectorAll('.ritual-step').forEach(step => {
-      ritualObserver.observe(step);
-    });
+    // Canvas cursor trail + ritual observer are now handled by shared.js globally.
 
     // Testimonial Logic
     const testimonials = document.querySelectorAll('.testimonial-slide');
@@ -518,210 +491,7 @@
 
     startTestimonialTimer();
 
-    // Custom Cursor Logic
-    const cursorDot = document.getElementById('cursor-dot');
-    const cursorRing = document.getElementById('cursor-ring');
-    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
-    let ringX = mouseX, ringY = mouseY;
-    const useCustomCursor = window.matchMedia('(pointer: fine)').matches && !('ontouchstart' in window);
-
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX; mouseY = e.clientY;
-      if (useCustomCursor && cursorDot) {
-        cursorDot.style.left = `${mouseX}px`;
-        cursorDot.style.top  = `${mouseY}px`;
-      }
-    }, { passive: true });
-
-    if (!useCustomCursor) {
-      if (cursorDot)  cursorDot.style.display  = 'none';
-      if (cursorRing) cursorRing.style.display = 'none';
-    }
-
-    // Hover states for links and buttons
-    const interactiveElements = document.querySelectorAll('a, button, .dot, .nav-icon, input, textarea');
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', () => { if (cursorRing) { cursorRing.style.width='54px'; cursorRing.style.height='54px'; } });
-      el.addEventListener('mouseleave', () => { if (cursorRing) { cursorRing.style.width='36px'; cursorRing.style.height='36px'; } });
-    });
-
-    // Canvas Cursor Line Trail Effect
-    const cursorCanvas = document.createElement('canvas');
-    cursorCanvas.id = 'cursor-canvas';
-    Object.assign(cursorCanvas.style, { position:'fixed', top:'0', left:'0', width:'100vw', height:'100vh', pointerEvents:'none', zIndex:'9997' });
-    document.body.prepend(cursorCanvas);
-
-    const ctx = cursorCanvas.getContext('2d');
-    const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-    const lines = [];
-    
-    const E = { friction: 0.5, trails: 12, size: 30, dampening: 0.25, tension: 0.98 }; // Reduced for perf
-
-    function Node() {
-      this.x = 0;
-      this.y = 0;
-      this.vy = 0;
-      this.vx = 0;
-    }
-
-    function Line(config) {
-      this.spring = config.spring + 0.1 * Math.random() - 0.02;
-      this.friction = E.friction + 0.01 * Math.random() - 0.002;
-      this.nodes = [];
-      for (let n = 0; n < E.size; n++) {
-        let t = new Node();
-        t.x = pos.x;
-        t.y = pos.y;
-        this.nodes.push(t);
-      }
-    }
-
-    Line.prototype.update = function () {
-      let e = this.spring;
-      let t = this.nodes[0];
-      t.vx += (pos.x - t.x) * e;
-      t.vy += (pos.y - t.y) * e;
-      for (let n, i = 0, a = this.nodes.length; i < a; i++) {
-        t = this.nodes[i];
-        if (i > 0) {
-          n = this.nodes[i - 1];
-          t.vx += (n.x - t.x) * e;
-          t.vy += (n.y - t.y) * e;
-          t.vx += n.vx * E.dampening;
-          t.vy += n.vy * E.dampening;
-        }
-        t.vx *= this.friction;
-        t.vy *= this.friction;
-        t.x += t.vx;
-        t.y += t.vy;
-        e *= E.tension;
-      }
-    };
-
-    Line.prototype.draw = function () {
-      let e, t;
-      let n = this.nodes[0].x;
-      let i = this.nodes[0].y;
-      ctx.beginPath();
-      ctx.moveTo(n, i);
-      let a;
-      for (a = 1; a < this.nodes.length - 2; a++) {
-        e = this.nodes[a];
-        t = this.nodes[a + 1];
-        n = 0.5 * (e.x + t.x);
-        i = 0.5 * (e.y + t.y);
-        ctx.quadraticCurveTo(e.x, e.y, n, i);
-      }
-      e = this.nodes[a];
-      t = this.nodes[a + 1];
-      ctx.quadraticCurveTo(e.x, e.y, t.x, t.y);
-      ctx.stroke();
-      ctx.closePath();
-    };
-
-    function onMousemove(e) {
-      const cx = e.touches ? e.touches[0].clientX : e.clientX;
-      const cy = e.touches ? e.touches[0].clientY : e.clientY;
-      pos.x = cx; pos.y = cy;
-    }
-    document.addEventListener('mousemove', onMousemove, { passive: true });
-    document.addEventListener('touchmove', onMousemove, { passive: true });
-    document.addEventListener('touchstart', onMousemove, { passive: true });
-
-    for (let i = 0; i < E.trails; i++) {
-      lines.push(new Line({ spring: 0.4 + (i / E.trails) * 0.025 }));
-    }
-
-    function resizeCanvas() {
-      ctx.canvas.width  = window.innerWidth;
-      ctx.canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', () => { clearTimeout(window._rcTimer); window._rcTimer = setTimeout(resizeCanvas, 150); }, { passive: true });
-    resizeCanvas();
-
-    let colorPhase = Math.random() * 2 * Math.PI;
-
-    // Smooth Scroll (Lenis)
-    const lenis = new Lenis({
-      duration: 0.75,
-      easing: (t) => 1 - Math.pow(1 - t, 3), // easeOutCubic — snappy
-    });
-    window.__lenis = lenis;
-
-    // ── Bg Particles Setup ──────────────────────
-    const bgCanvas = document.createElement('canvas');
-    bgCanvas.id = 'bg-particles';
-    Object.assign(bgCanvas.style, { position:'fixed', top:'0', left:'0', width:'100vw', height:'100vh', pointerEvents:'none', zIndex:'0' });
-    document.body.prepend(bgCanvas);
-    const bgCtx = bgCanvas.getContext('2d');
-    let bgParticles = [];
-    let bgFrame = 0;
-
-    function initBgParticles() {
-      bgCanvas.width  = window.innerWidth;
-      bgCanvas.height = window.innerHeight;
-      bgParticles = [];
-      const count = window.innerWidth < 768 ? 16 : 28; // Fewer = faster
-      for (let i = 0; i < count; i++) {
-        bgParticles.push({
-          x: Math.random() * bgCanvas.width,
-          y: Math.random() * bgCanvas.height,
-          radius: Math.random() * 1.4 + 0.3,
-          vx: (Math.random() - 0.5) * 0.12,
-          vy: -(Math.random() * 0.28 + 0.05),
-          alpha: Math.random() * 0.5 + 0.08
-        });
-      }
-    }
-    window.addEventListener('resize', () => { clearTimeout(window._bpTimer); window._bpTimer = setTimeout(initBgParticles, 200); }, { passive: true });
-    initBgParticles();
-
-    // ── SINGLE MASTER RAF LOOP — all animations share one tick ──
-    function masterTick(time) {
-      // 1. Lenis
-      lenis.raf(time);
-
-      // 2. Cursor ring lerp
-      if (useCustomCursor && cursorRing) {
-        ringX += (mouseX - ringX) * 0.12;
-        ringY += (mouseY - ringY) * 0.12;
-        cursorRing.style.left = `${ringX}px`;
-        cursorRing.style.top  = `${ringY}px`;
-      }
-
-      // 3. Canvas ribbon (only on non-touch)
-      if (useCustomCursor) {
-        ctx.globalCompositeOperation = 'source-over';
-        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-        ctx.globalCompositeOperation = 'lighter';
-        colorPhase += 0.005;
-        const hue = 39 + Math.sin(colorPhase) * 7;
-        ctx.strokeStyle = `hsla(${hue},55%,52%,0.15)`;
-        ctx.lineWidth = 1.25;
-        for (let i = 0; i < lines.length; i++) { lines[i].update(); lines[i].draw(); }
-      }
-
-      // 4. Bg particles (every 2nd frame)
-      bgFrame++;
-      if (bgFrame % 2 === 0) {
-        bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
-        bgCtx.fillStyle = '#C9A84C';
-        bgParticles.forEach(p => {
-          bgCtx.globalAlpha = p.alpha;
-          bgCtx.beginPath();
-          bgCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          bgCtx.fill();
-          p.x += p.vx; p.y += p.vy;
-          if (p.x < 0) p.x = bgCanvas.width;
-          else if (p.x > bgCanvas.width) p.x = 0;
-          if (p.y < 0) p.y = bgCanvas.height;
-        });
-        bgCtx.globalAlpha = 1;
-      }
-
-      requestAnimationFrame(masterTick);
-    }
-    requestAnimationFrame(masterTick);
+    // Animation engine (Lenis, particles, cursor trail, masterTick) all live in shared.js
 
     // Scroll Reveal Observer
     const scrollRevealObserver = new IntersectionObserver((entries) => {
@@ -865,5 +635,6 @@
     });
 
   </script>
+  <script src="shared.js?v=4" defer></script>
 </body>
 </html>
