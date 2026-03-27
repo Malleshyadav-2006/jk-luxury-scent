@@ -1,0 +1,16 @@
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Gemini/IDEs
+.gemini/
+.vscode/
+.idea/
+
+# Node (not used yet, but good practice)
+node_modules/
+npm-debug.log*
+
+# Build artifacts
+dist/
+build/

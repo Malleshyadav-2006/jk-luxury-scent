@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story — JK Luxury Scent</title>
+  <meta name="description" content="The story behind JK Luxury Scent. Born from darkness, worn with intention.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;1,300&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .story-hero {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .story-hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('exgif-exports/gifs/smoke-bg.gif');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.4;
+    }
+    .story-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to bottom, rgba(10,8,6,0.6) 0%, rgba(10,8,6,0.95) 100%);
+    }
+    .story-hero-inner { position: relative; z-index: 2; max-width: 700px; }
+
+    .page-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--gold-dust);
+      display: block;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.8s 0.2s ease forwards;
+    }
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 80px;
+      font-weight: 200;
+      color: var(--ivory-smoke);
+      margin: 0 0 24px;
+      line-height: 1;
+      opacity: 0;
+      animation: fadeUp 1s 0.4s ease forwards;
+    }
+    .page-sub {
+      font-family: 'Jost', sans-serif;
+      font-size: 17px;
+      font-style: italic;
+      color: var(--ivory-smoke);
+      opacity: 0;
+      animation: fadeUp 0.8s 0.6s ease forwards;
+      line-height: 1.8;
+    }
+    @keyframes fadeUp { to { opacity:0.8; transform:translateY(0); } }
+    .page-label, .page-title { animation-fill-mode: forwards; }
+    .page-title { animation: fadeUpFull 1s 0.4s ease forwards; }
+    .page-label { animation: fadeUpFull 0.8s 0.2s ease forwards; }
+    .page-sub   { animation: fadeUpFull 0.8s 0.6s ease forwards; }
+    @keyframes fadeUpFull { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+    /* Story editorial blocks */
+    .story-blocks { padding: 100px 0 80px; }
+    .story-block {
+      display: flex;
+      align-items: center;
+      gap: 80px;
+      max-width: 1100px;
+      margin: 0 auto 100px;
+      padding: 0 48px;
+    }
+    .story-block.reverse { flex-direction: row-reverse; }
+    .story-block-img {
+      width: 48%;
+      flex-shrink: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .story-block-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid rgba(201,168,76,0.15);
+      pointer-events: none;
+    }
+    .story-block-img img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.9s ease;
+    }
+    .story-block-img:hover img { transform: scale(1.04); }
+    .story-block-text { flex: 1; }
+    .block-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold-dust);
+      display: block;
+      margin-bottom: 16px;
+    }
+    .block-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 52px;
+      font-weight: 300;
+      color: var(--ivory-smoke);
+      margin: 0 0 20px;
+      line-height: 1.15;
+    }
+    .gold-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--gold-dust);
+      opacity: 0.5;
+      margin-bottom: 20px;
+    }
+    .block-body {
+      font-family: 'Jost', sans-serif;
+      font-size: 15px;
+      color: var(--ivory-smoke);
+      opacity: 0.65;
+      line-height: 1.9;
+    }
+
+    /* Quote band */
+    .story-quote-band {
+      padding: 80px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(201,168,76,0.1);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      margin: 40px 0;
+    }
+    .story-quote-band blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 48px;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ivory-smoke);
+      margin: 0 auto;
+      max-width: 800px;
+      line-height: 1.3;
+    }
+    .story-quote-band cite {
+      display: block;
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold-dust);
+      margin-top: 24px;
+      font-style: normal;
+    }
+
+    @media (max-width: 768px) {
+      .page-title { font-size: 52px; }
+      .story-block, .story-block.reverse { flex-direction: column; padding: 0 24px; gap: 32px; }
+      .story-block-img { width: 100%; }
+      .story-block-img img { height: 260px; }
+      .block-heading { font-size: 36px; }
+      .story-blocks { padding: 60px 0; }
+      .story-quote-band blockquote { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <nav id="navbar" class="navbar scrolled">
+    <div class="nav-left">
+      <a href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:12px;">
+        <span class="logo-text">JK</span><span class="logo-subtext">LUXURY SCENT</span>
+      </a>
+    </div>
+    <div class="nav-center">
+      <a href="index.html"      class="nav-link">Home</a>
+      <a href="collection.html" class="nav-link">Collection</a>
+      <a href="story.html"      class="nav-link active">Our Story</a>
+      <a href="ritual.html"     class="nav-link">The Ritual</a>
+      <a href="gifting.html"    class="nav-link">Gifts</a>
+    </div>
+    <div class="nav-right">
+      <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <div class="cart-container" onclick="window.location.href='cart.html'" style="cursor:pointer;">
+        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <span class="cart-badge">0</span>
+      </div>
+      <button id="mobile-toggle" class="nav-icon mobile-toggle-btn" style="background:none;border:none;padding:0;cursor:pointer;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+    </div>
+  </nav>
+
+  <div class="mobile-overlay" id="mobile-overlay">
+    <button class="mobile-close" id="mobile-close"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <div class="mobile-links">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="collection.html" class="mobile-link">Collection</a>
+      <a href="story.html" class="mobile-link">Our Story</a>
+      <a href="ritual.html" class="mobile-link">The Ritual</a>
+      <a href="gifting.html" class="mobile-link">Gifting</a>
+    </div>
+  </div>
+
+  <div id="page-transition" class="page-transition"></div>
+
+  <!-- Hero -->
+  <div class="story-hero">
+    <div class="story-hero-bg"></div>
+    <div class="story-hero-overlay"></div>
+    <div class="story-hero-inner">
+      <span class="page-label">Our Origin</span>
+      <h1 class="page-title">Born From Darkness</h1>
+      <p class="page-sub">JK Luxury Scent was not created.<br>It was discovered — in the space between obsession and silence.</p>
+    </div>
+  </div>
+
+  <!-- Story blocks -->
+  <section class="story-blocks">
+
+    <div class="story-block reveal">
+      <div class="story-block-img">
+        <img src="01-whisk-originals/collection-flatlay.png" alt="The Origin">
+      </div>
+      <div class="story-block-text">
+        <span class="block-label">01 / The Beginning</span>
+        <h2 class="block-heading">A Scent Is Not Made.<br>It Is Summoned.</h2>
+        <div class="gold-rule"></div>
+        <p class="block-body">Every bottle of JK begins in silence. In the space between an idea and its expression, our founder discovered that the most powerful scents are not created in labs — they are found in the depths of lived experience. In grief. In desire. In the quiet moments that define who we truly are.</p>
+      </div>
+    </div>
+
+    <div class="story-block reverse reveal" style="transition-delay:0.1s">
+      <div class="story-block-img">
+        <img loading="lazy" src="01-whisk-originals/lifestyle-01.png" alt="The Craft">
+      </div>
+      <div class="story-block-text">
+        <span class="block-label">02 / The Craft</span>
+        <h2 class="block-heading">Obsession Is<br>Our Process.</h2>
+        <div class="gold-rule"></div>
+        <p class="block-body">We source every ingredient with obsessive precision. Oud from the ancient forests of Laos. Rose absolute pressed under moonlight in Grasse. Amber resins aged for decades. Nothing is rushed. Nothing is compromised. The result is a luxury that you wear — and that wears you.</p>
+      </div>
+    </div>
+
+    <div class="story-block reveal" style="transition-delay:0.15s">
+      <div class="story-block-img">
+        <img loading="lazy" src="01-whisk-originals/lifestyle-02.png" alt="The Philosophy">
+      </div>
+      <div class="story-block-text">
+        <span class="block-label">03 / The Philosophy</span>
+        <h2 class="block-heading">Worn With<br>Intention.</h2>
+        <div class="gold-rule"></div>
+        <p class="block-body">JK is not for everyone. It is for those who understand that a fragrance is a statement of identity — not a trend. Each of our three expressions was designed for a different state of being. Choose not by what smells good, but by what feels true.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <div class="story-quote-band reveal">
+    <blockquote>"The most beautiful things are those that cannot be seen — only felt."</blockquote>
+    <cite>— JK Luxury Scent</cite>
+  </div>
+
+  <div style="text-align:center;padding:80px 24px;">
+    <a href="collection.html" class="btn-luxury reveal">EXPLORE THE COLLECTION →</a>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-texture"></div>
+    <div class="footer-content">
+      <div class="footer-top">
+        <div class="footer-col footer-logo">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold-dust);font-weight:300;line-height:1;">JK</span>
+          <span style="font-size:9px;letter-spacing:0.3em;color:var(--ivory-smoke);opacity:0.5;margin-top:4px;display:block;">LUXURY SCENT</span>
+          <p style="font-size:14px;opacity:0.5;font-style:italic;max-width:220px;margin-top:16px;line-height:1.6;font-family:'Jost',sans-serif;">Born from darkness. Worn with intention.</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-label">EXPLORE</span>
+          <a href="index.html"      class="footer-link">Home</a>
+          <a href="collection.html" class="footer-link">Collection</a>
+          <a href="story.html"      class="footer-link">Our Story</a>
+          <a href="ritual.html"     class="footer-link">The Ritual</a>
+          <a href="gifting.html"    class="footer-link">Gifting</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-label">CONNECT</span>
+          <a href="mailto:hello@jkluxuryscent.com" class="footer-link">hello@jkluxuryscent.com</a>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2024 JK Luxury Scent. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="#" class="footer-legal-link">Privacy Policy</a><span class="footer-dot">·</span>
+          <a href="#" class="footer-legal-link">Terms</a><span class="footer-dot">·</span>
+          <a href="#" class="footer-legal-link">Shipping</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="shared.js"></script>
+</body>
+</html>

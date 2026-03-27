@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Collection — JK Luxury Scent</title>
+  <meta name="description" content="Discover our three obsessions. Handcrafted luxury fragrances born from darkness.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;1,300&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Page hero */
+    .page-hero {
+      min-height: 55vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 160px 24px 80px;
+      position: relative;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center top, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--gold-dust);
+      margin-bottom: 20px;
+      display: block;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeSlideUp 0.8s 0.2s ease forwards;
+    }
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 84px;
+      font-weight: 200;
+      color: var(--ivory-smoke);
+      margin: 0 0 20px;
+      line-height: 1;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeSlideUp 1s 0.4s cubic-bezier(0.19,1,0.22,1) forwards;
+    }
+    .page-subtitle {
+      font-family: 'Jost', sans-serif;
+      font-size: 16px;
+      font-style: italic;
+      color: var(--ivory-smoke);
+      opacity: 0;
+      animation: fadeSlideUp 0.8s 0.6s ease forwards;
+    }
+    @keyframes fadeSlideUp {
+      to { opacity: 0.55; transform: translateY(0); }
+    }
+    .page-label { animation: fadeSlideUpFull 0.8s 0.2s ease forwards; }
+    .page-title  { animation: fadeSlideUpFull 1s 0.4s cubic-bezier(0.19,1,0.22,1) forwards; }
+    @keyframes fadeSlideUpFull {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Filter bar */
+    .filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 64px;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeSlideUpFull 0.8s 0.7s ease forwards;
+    }
+    .filter-btn {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ivory-smoke);
+      opacity: 0.4;
+      background: none;
+      border: none;
+      padding: 0 0 6px;
+      border-bottom: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      opacity: 1;
+      color: var(--gold-dust);
+      border-bottom-color: var(--gold-dust);
+    }
+
+    /* Collection section */
+    .collection-full { padding: 20px 0 120px; }
+
+    /* Extended card styles */
+    .collection-card {
+      position: relative;
+    }
+    .cart-add-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 14px;
+      background: transparent;
+      border: 1px solid rgba(201,168,76,0.4);
+      color: var(--gold-dust);
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 16px;
+      transition: all 0.3s ease;
+    }
+    .cart-add-btn:hover {
+      background: var(--gold-dust);
+      color: var(--obsidian);
+      border-color: var(--gold-dust);
+    }
+    .cart-add-btn.cart-pulse {
+      animation: cartPop 0.5s ease;
+    }
+    @keyframes cartPop {
+      0%  { transform: scale(1); }
+      50% { transform: scale(0.95); background: var(--gold-dust); color: var(--obsidian); }
+      100%{ transform: scale(1); }
+    }
+
+    /* Marquee between sections */
+    .scent-marquee {
+      overflow: hidden;
+      padding: 32px 0;
+      border-top: 1px solid rgba(201,168,76,0.1);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      margin: 80px 0;
+      white-space: nowrap;
+    }
+    .scent-marquee-inner {
+      display: inline-flex;
+      animation: marqueeScroll 20s linear infinite;
+    }
+    .scent-marquee-inner span {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--ivory-smoke);
+      opacity: 0.3;
+      margin-right: 64px;
+    }
+    .scent-marquee-inner span.dot {
+      color: var(--gold-dust);
+      opacity: 0.6;
+      letter-spacing: 0;
+      margin-right: 64px;
+    }
+    @keyframes marqueeScroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    @media (max-width: 768px) {
+      .page-title { font-size: 52px; }
+      .page-hero { padding: 130px 24px 60px; }
+      .collection-full { padding: 20px 0 80px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Cursor -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <!-- Nav -->
+  <nav id="navbar" class="navbar scrolled">
+    <div class="nav-left">
+      <a href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:12px;">
+        <span class="logo-text">JK</span>
+        <span class="logo-subtext">LUXURY SCENT</span>
+      </a>
+    </div>
+    <div class="nav-center">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="collection.html" class="nav-link active">Collection</a>
+      <a href="story.html" class="nav-link">Our Story</a>
+      <a href="ritual.html" class="nav-link">The Ritual</a>
+      <a href="gifting.html" class="nav-link">Gifts</a>
+    </div>
+    <div class="nav-right">
+      <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <div class="cart-container" onclick="window.location.href='cart.html'" style="cursor:pointer;">
+        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <span class="cart-badge">0</span>
+      </div>
+      <button id="mobile-toggle" class="nav-icon mobile-toggle-btn" style="background:none;border:none;padding:0;cursor:pointer;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay" id="mobile-overlay">
+    <button class="mobile-close" id="mobile-close"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <div class="mobile-links">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="collection.html" class="mobile-link">Collection</a>
+      <a href="story.html" class="mobile-link">Our Story</a>
+      <a href="ritual.html" class="mobile-link">The Ritual</a>
+      <a href="gifting.html" class="mobile-link">Gifting</a>
+    </div>
+  </div>
+
+  <div id="page-transition" class="page-transition"></div>
+
+  <!-- Page Hero -->
+  <div class="page-hero">
+    <span class="page-label">Handcrafted Luxury</span>
+    <h1 class="page-title">The Collection</h1>
+    <p class="page-subtitle">Three obsessions. One signature.</p>
+  </div>
+
+  <!-- Filter Bar -->
+  <div class="container">
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="oud">Oud</button>
+      <button class="filter-btn" data-filter="amber">Amber</button>
+      <button class="filter-btn" data-filter="floral">Floral</button>
+    </div>
+  </div>
+
+  <!-- Collection -->
+  <section class="collection-full">
+    <div class="container">
+      <div class="collection-grid">
+        <!-- Card 1 -->
+        <div class="collection-card reveal" data-category="oud">
+          <div class="card-img-wrapper">
+            <img loading="eager" src="01-whisk-originals/collection-flatlay.png" alt="Noir Absolu" class="card-img">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">NOIR ABSOLU</h3>
+            <p class="card-notes">Oud · Dark Rose · Musk · Amber</p>
+            <div class="card-footer">
+              <span class="card-price">$285</span>
+              <a href="product.html" class="card-explore">EXPLORE →</a>
+            </div>
+            <button class="cart-add-btn" data-add-cart
+              data-id="noir-absolu"
+              data-name="Noir Absolu"
+              data-price="285"
+              data-img="01-whisk-originals/collection-flatlay.png">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="collection-card reveal" data-category="amber" style="transition-delay:0.1s">
+          <div class="card-img-wrapper">
+            <img loading="lazy" src="01-whisk-originals/lifestyle-01.png" alt="Amber Ritual" class="card-img">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">AMBER RITUAL</h3>
+            <p class="card-notes">Saffron · Amber · Sandalwood · Vanilla</p>
+            <div class="card-footer">
+              <span class="card-price">$265</span>
+              <a href="product.html" class="card-explore">EXPLORE →</a>
+            </div>
+            <button class="cart-add-btn" data-add-cart
+              data-id="amber-ritual"
+              data-name="Amber Ritual"
+              data-price="265"
+              data-img="01-whisk-originals/lifestyle-01.png">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="collection-card reveal" data-category="floral" style="transition-delay:0.2s">
+          <div class="card-img-wrapper">
+            <img loading="lazy" src="01-whisk-originals/lifestyle-02.png" alt="Velvet Obsession" class="card-img">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">VELVET OBSESSION</h3>
+            <p class="card-notes">White Musk · Jasmine · Cedarwood · Iris</p>
+            <div class="card-footer">
+              <span class="card-price">$245</span>
+              <a href="product.html" class="card-explore">EXPLORE →</a>
+            </div>
+            <button class="cart-add-btn" data-add-cart
+              data-id="velvet-obsession"
+              data-name="Velvet Obsession"
+              data-price="245"
+              data-img="01-whisk-originals/lifestyle-02.png">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              ADD TO CART
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Marquee divider -->
+    <div class="scent-marquee">
+      <div class="scent-marquee-inner">
+        <span>Noir Absolu</span><span class="dot">·</span>
+        <span>Amber Ritual</span><span class="dot">·</span>
+        <span>Velvet Obsession</span><span class="dot">·</span>
+        <span>Born From Darkness</span><span class="dot">·</span>
+        <span>Worn With Intention</span><span class="dot">·</span>
+        <span>Noir Absolu</span><span class="dot">·</span>
+        <span>Amber Ritual</span><span class="dot">·</span>
+        <span>Velvet Obsession</span><span class="dot">·</span>
+        <span>Born From Darkness</span><span class="dot">·</span>
+        <span>Worn With Intention</span><span class="dot">·</span>
+      </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="container" style="text-align:center;padding-bottom:40px;">
+      <p class="reveal" style="font-family:'Cormorant Garamond',serif;font-size:32px;font-weight:300;font-style:italic;color:var(--ivory-smoke);opacity:0.6;max-width:600px;margin:0 auto 40px;">
+        "Not for everyone. For those who understand."
+      </p>
+      <a href="gifting.html" class="btn-luxury reveal">GIFTING SETS →</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-texture"></div>
+    <div class="footer-content">
+      <div class="footer-top">
+        <div class="footer-col footer-logo">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold-dust);font-weight:300;line-height:1;">JK</span>
+          <span style="font-size:9px;letter-spacing:0.3em;color:var(--ivory-smoke);opacity:0.5;margin-top:4px;display:block;">LUXURY SCENT</span>
+          <p style="font-size:14px;opacity:0.5;font-style:italic;max-width:220px;margin-top:16px;line-height:1.6;font-family:'Jost',sans-serif;">Born from darkness. Worn with intention.</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-label">EXPLORE</span>
+          <a href="index.html" class="footer-link">Home</a>
+          <a href="collection.html" class="footer-link">Collection</a>
+          <a href="story.html" class="footer-link">Our Story</a>
+          <a href="ritual.html" class="footer-link">The Ritual</a>
+          <a href="gifting.html" class="footer-link">Gifting</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-label">CONNECT</span>
+          <a href="mailto:hello@jkluxuryscent.com" class="footer-link">hello@jkluxuryscent.com</a>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2024 JK Luxury Scent. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="#" class="footer-legal-link">Privacy Policy</a>
+          <span class="footer-dot">·</span>
+          <a href="#" class="footer-legal-link">Terms</a>
+          <span class="footer-dot">·</span>
+          <a href="#" class="footer-legal-link">Shipping</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="shared.js"></script>
+  <script>
+    // Filter functionality
+    document.querySelectorAll('.filter-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.filter-btn').forEach(function(b) { b.classList.remove('active'); });
+        this.classList.add('active');
+        var filter = this.getAttribute('data-filter');
+        document.querySelectorAll('.collection-card').forEach(function(card) {
+          var cat = card.getAttribute('data-category');
+          card.style.opacity = (filter === 'all' || cat === filter) ? '1' : '0.2';
+          card.style.pointerEvents = (filter === 'all' || cat === filter) ? 'auto' : 'none';
+          card.style.transition = 'opacity 0.4s ease';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

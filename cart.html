@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart — JK Luxury Scent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;1,300&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .cart-page { padding: 160px 0 120px; min-height: 80vh; }
+    .cart-page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 64px;
+      font-weight: 200;
+      color: var(--ivory-smoke);
+      margin: 0 0 16px;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: cartTitleIn 0.8s 0.1s ease forwards;
+    }
+    .cart-count-text {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      color: var(--gold-dust);
+      opacity: 0;
+      animation: cartTitleIn 0.6s 0.3s ease forwards;
+    }
+    @keyframes cartTitleIn { to { opacity:1; transform:translateY(0); } }
+
+    .cart-layout { display: flex; gap: 60px; align-items: flex-start; margin-top: 48px; }
+    .cart-items   { flex: 1; }
+    .cart-summary {
+      width: 320px;
+      flex-shrink: 0;
+      background: #0D0906;
+      padding: 36px;
+      border: 1px solid rgba(201,168,76,0.12);
+      position: sticky;
+      top: 100px;
+    }
+
+    /* Cart Item row */
+    .cart-item {
+      display: flex;
+      gap: 24px;
+      padding: 28px 0;
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+      align-items: center;
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: slideInLeft 0.5s ease forwards;
+    }
+    @keyframes slideInLeft { to { opacity:1; transform:translateX(0); } }
+    .cart-item-img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      flex-shrink: 0;
+      background: #110E0B;
+    }
+    .cart-item-info { flex: 1; }
+    .cart-item-name {
+      font-family: 'Jost', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ivory-smoke);
+      margin: 0 0 6px;
+    }
+    .cart-item-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      color: var(--gold-dust);
+      font-weight: 300;
+    }
+    .cart-qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 12px;
+    }
+    .qty-btn {
+      width: 28px;
+      height: 28px;
+      border: 1px solid rgba(201,168,76,0.3);
+      background: none;
+      color: var(--ivory-smoke);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .qty-btn:hover { border-color: var(--gold-dust); color: var(--gold-dust); }
+    .qty-num { font-family: 'Jost', sans-serif; font-size: 14px; color: var(--ivory-smoke); min-width: 20px; text-align: center; }
+    .remove-btn {
+      background: none;
+      border: none;
+      color: var(--ivory-smoke);
+      opacity: 0.3;
+      cursor: pointer;
+      font-size: 12px;
+      font-family: 'Jost', sans-serif;
+      letter-spacing: 0.1em;
+      margin-left: auto;
+      transition: opacity 0.2s;
+      flex-shrink: 0;
+    }
+    .remove-btn:hover { opacity: 1; color: #c0392b; }
+
+    /* Empty state */
+    .cart-empty-state {
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .empty-icon {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 100px;
+      color: var(--gold-dust);
+      opacity: 0.08;
+      line-height: 1;
+      margin-bottom: 24px;
+    }
+    .cart-empty-state h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 42px;
+      font-weight: 300;
+      color: var(--ivory-smoke);
+      margin: 0 0 12px;
+    }
+    .cart-empty-state p {
+      font-family: 'Jost', sans-serif;
+      font-size: 15px;
+      color: var(--ivory-smoke);
+      opacity: 0.45;
+      margin-bottom: 40px;
+    }
+
+    /* Summary */
+    .summary-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold-dust);
+      display: block;
+      margin-bottom: 32px;
+    }
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      color: var(--ivory-smoke);
+      opacity: 0.65;
+    }
+    .summary-row.total {
+      opacity: 1;
+      font-size: 18px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(201,168,76,0.15);
+      margin-top: 8px;
+    }
+    .summary-row.total .total-price { font-family: 'Cormorant Garamond', serif; font-size: 28px; color: var(--gold-dust); }
+    .checkout-btn {
+      width: 100%;
+      padding: 18px;
+      background: var(--gold-dust);
+      color: var(--obsidian);
+      border: none;
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      cursor: pointer;
+      margin-top: 28px;
+      transition: opacity 0.3s, transform 0.2s;
+    }
+    .checkout-btn:hover { opacity: 0.88; transform: translateY(-2px); }
+    .checkout-btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
+
+    @media (max-width: 768px) {
+      .cart-page { padding: 130px 0 80px; }
+      .cart-page-title { font-size: 44px; }
+      .cart-layout { flex-direction: column; }
+      .cart-summary { width: 100%; box-sizing: border-box; position: static; }
+    }
+  </style>
+</head>
+<body>
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <nav id="navbar" class="navbar scrolled">
+    <div class="nav-left">
+      <a href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:12px;">
+        <span class="logo-text">JK</span><span class="logo-subtext">LUXURY SCENT</span>
+      </a>
+    </div>
+    <div class="nav-center">
+      <a href="index.html"      class="nav-link">Home</a>
+      <a href="collection.html" class="nav-link">Collection</a>
+      <a href="story.html"      class="nav-link">Our Story</a>
+      <a href="ritual.html"     class="nav-link">The Ritual</a>
+      <a href="gifting.html"    class="nav-link">Gifts</a>
+    </div>
+    <div class="nav-right">
+      <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <div class="cart-container" style="cursor:pointer;">
+        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <span class="cart-badge">0</span>
+      </div>
+      <button id="mobile-toggle" class="nav-icon mobile-toggle-btn" style="background:none;border:none;padding:0;cursor:pointer;"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></button>
+    </div>
+  </nav>
+
+  <div class="mobile-overlay" id="mobile-overlay">
+    <button class="mobile-close" id="mobile-close"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <div class="mobile-links">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="collection.html" class="mobile-link">Collection</a>
+      <a href="story.html" class="mobile-link">Our Story</a>
+      <a href="ritual.html" class="mobile-link">The Ritual</a>
+      <a href="gifting.html" class="mobile-link">Gifting</a>
+    </div>
+  </div>
+
+  <div id="page-transition" class="page-transition"></div>
+
+  <section class="cart-page">
+    <div class="container">
+      <h1 class="cart-page-title">Your Cart</h1>
+      <span class="cart-count-text" id="cart-count-text">0 items</span>
+
+      <div class="cart-layout">
+        <div class="cart-items" id="cart-items-container">
+          <!-- Rendered by JS -->
+        </div>
+
+        <div class="cart-summary">
+          <span class="summary-label">Order Summary</span>
+          <div class="summary-row"><span>Subtotal</span><span id="summary-subtotal">$0.00</span></div>
+          <div class="summary-row"><span>Shipping</span><span style="color:var(--gold-dust)">Complimentary</span></div>
+          <div class="summary-row"><span>Engraving</span><span>$0.00</span></div>
+          <div class="summary-row total">
+            <span>Total</span>
+            <span class="total-price" id="summary-total">$0.00</span>
+          </div>
+          <button class="checkout-btn" id="checkout-btn" disabled>PROCEED TO CHECKOUT</button>
+          <a href="collection.html" style="display:block;text-align:center;margin-top:20px;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:0.2em;color:var(--ivory-smoke);opacity:0.4;text-decoration:none;transition:opacity 0.3s;" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.4'">← CONTINUE SHOPPING</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-texture"></div>
+    <div class="footer-content">
+      <div class="footer-top">
+        <div class="footer-col footer-logo">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold-dust);font-weight:300;line-height:1;">JK</span>
+          <span style="font-size:9px;letter-spacing:0.3em;color:var(--ivory-smoke);opacity:0.5;margin-top:4px;display:block;">LUXURY SCENT</span>
+        </div>
+        <div class="footer-col">
+          <span class="footer-label">EXPLORE</span>
+          <a href="index.html"      class="footer-link">Home</a>
+          <a href="collection.html" class="footer-link">Collection</a>
+          <a href="story.html"      class="footer-link">Our Story</a>
+          <a href="gifting.html"    class="footer-link">Gifting</a>
+        </div>
+        <div class="footer-col">
+          <span class="footer-label">CONNECT</span>
+          <a href="mailto:hello@jkluxuryscent.com" class="footer-link">hello@jkluxuryscent.com</a>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2024 JK Luxury Scent. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="#" class="footer-legal-link">Privacy Policy</a><span class="footer-dot">·</span>
+          <a href="#" class="footer-legal-link">Terms</a><span class="footer-dot">·</span>
+          <a href="#" class="footer-legal-link">Shipping</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="shared.js"></script>
+  <script>
+    // Render cart items on this page
+    function renderCart() {
+      var cart = window.JKCart.getCart();
+      var container = document.getElementById('cart-items-container');
+      var countText = document.getElementById('cart-count-text');
+      var subtotalEl = document.getElementById('summary-subtotal');
+      var totalEl    = document.getElementById('summary-total');
+      var checkoutBtn = document.getElementById('checkout-btn');
+
+      var total = window.JKCart.total();
+      var count = window.JKCart.count();
+
+      countText.textContent = count + (count === 1 ? ' item' : ' items');
+      subtotalEl.textContent = '$' + total.toFixed(2);
+      totalEl.textContent    = '$' + total.toFixed(2);
+      checkoutBtn.disabled   = count === 0;
+
+      if (cart.length === 0) {
+        container.innerHTML = '<div class="cart-empty-state">'
+          + '<div class="empty-icon">∅</div>'
+          + '<h2>Your cart is empty.</h2>'
+          + '<p>You have not added any obsessions yet.</p>'
+          + '<a href="collection.html" class="btn-luxury">DISCOVER THE COLLECTION</a>'
+          + '</div>';
+        return;
+      }
+
+      container.innerHTML = cart.map(function(item, i) {
+        return '<div class="cart-item" style="animation-delay:' + (i * 0.08) + 's">'
+          + '<img src="' + item.img + '" alt="' + item.name + '" class="cart-item-img">'
+          + '<div class="cart-item-info">'
+          + '<p class="cart-item-name">' + item.name + '</p>'
+          + '<p class="cart-item-price">$' + (item.price * item.qty).toFixed(2) + '</p>'
+          + '<div class="cart-qty-controls">'
+          + '<button class="qty-btn" onclick="changeQty(\'' + item.id + '\',-1)">−</button>'
+          + '<span class="qty-num">' + item.qty + '</span>'
+          + '<button class="qty-btn" onclick="changeQty(\'' + item.id + '\',1)">+</button>'
+          + '</div>'
+          + '</div>'
+          + '<button class="remove-btn" onclick="removeItem(\'' + item.id + '\')">REMOVE</button>'
+          + '</div>';
+      }).join('');
+    }
+
+    function changeQty(id, delta) {
+      var cart = window.JKCart.getCart();
+      var item = cart.find(function(i) { return i.id === id; });
+      if (item) window.JKCart.updateQty(id, item.qty + delta);
+      renderCart();
+    }
+
+    function removeItem(id) {
+      window.JKCart.remove(id);
+      renderCart();
+    }
+
+    window.addEventListener('jk:cartUpdated', renderCart);
+    renderCart();
+  </script>
+</body>
+</html>

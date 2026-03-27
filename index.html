@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JK Luxury Scent</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="preloader-content">
+      <div id="preloader-jk">JK</div>
+      <div id="preloader-line"></div>
+      <div id="preloader-sub">LUXURY SCENT</div>
+    </div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+
+  <nav id="navbar" class="navbar">
+    <div class="nav-left">
+      <span class="logo-text">JK</span>
+      <span class="logo-subtext">LUXURY SCENT</span>
+    </div>
+    
+    <div class="nav-center">
+      <a href="index.html" class="nav-link active">Home</a>
+      <a href="collection.html" class="nav-link">Collection</a>
+      <a href="story.html" class="nav-link">Our Story</a>
+      <a href="ritual.html" class="nav-link">The Ritual</a>
+      <a href="gifting.html" class="nav-link">Gifts</a>
+    </div>
+
+    <div class="nav-right">
+      <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <div class="cart-container" onclick="window.location.href='cart.html'" style="cursor:pointer;">
+        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="21" r="1"></circle>
+          <circle cx="20" cy="21" r="1"></circle>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+        </svg>
+        <span class="cart-badge">0</span>
+      </div>
+      
+      <!-- Mobile Menus Toggle (Shows on <768px) -->
+      <button id="mobile-toggle" class="nav-icon mobile-toggle-btn" aria-label="Menu" style="background:none; border:none; padding:0; cursor:pointer;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Overlay -->
+  <div class="mobile-overlay" id="mobile-overlay">
+    <button class="mobile-close" id="mobile-close" aria-label="Close">
+      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M18 6L6 18M6 6l12 12"/>
+      </svg>
+    </button>
+    <div class="mobile-links">
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="collection.html" class="mobile-link">Collection</a>
+      <a href="story.html" class="mobile-link">Our Story</a>
+      <a href="ritual.html" class="mobile-link">The Ritual</a>
+      <a href="gifting.html" class="mobile-link">Gifting</a>
+    </div>
+  </div>
+
+  <!-- Gold Bar Page Transition -->
+  <div id="page-transition" class="page-transition"></div>
+
+  <section class="hero-section">
+    <div class="hero-bg">
+      <div class="hero-overlay"></div>
+    </div>
+    
+    <div class="hero-content container">
+      <div class="hero-left">
+        <span class="label text-gold-dust" style="font-size: 10px;">EST. 2024</span>
+        <h1 class="hero-headline">
+          <span class="word" style="animation-delay: 0.0s;">BORN</span>
+          <span class="word" style="animation-delay: 0.2s;">FROM</span>
+          <span class="word" style="animation-delay: 0.4s;">DARKNESS.</span>
+        </h1>
+        <p class="hero-subtext">The signature of obsession.</p>
+        <a href="#details" class="btn-luxury hero-cta">DISCOVER THE COLLECTION</a>
+      </div>
+      <div class="hero-right">
+        <img src="exgif-exports/gifs/bottle-float.gif" alt="JK Luxury Scent Bottle" class="bottle-img">
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span class="scroll-text">SCROLL</span>
+    </div>
+  </section>
+
+  <section class="brand-statement">
+    <div class="statement-content">
+      <div class="gold-line top-line"></div>
+      <h2 class="statement-quote">
+        Wear what cannot be seen.<br>
+        Feel what cannot be named.
+      </h2>
+      <div class="gold-line bottom-line"></div>
+      <span class="statement-attribution">— JK Luxury Scent</span>
+    </div>
+  </section>
+
+  <section class="collection-section" id="collection">
+    <div class="container">
+      <div class="collection-header">
+        <span class="label text-gold-dust">THE COLLECTION</span>
+        <h2 class="collection-headline reveal">Three Obsessions.</h2>
+      </div>
+
+      <div class="collection-grid">
+        <!-- Card 1 -->
+        <a href="#" class="collection-card reveal">
+          <div class="card-img-wrapper">
+            <img loading="lazy" src="01-whisk-originals/collection-flatlay.png" alt="Noir Absolu" class="card-img">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">NOIR ABSOLU</h3>
+            <p class="card-notes">Oud · Dark Rose · Musk · Amber</p>
+            <div class="card-footer">
+              <span class="card-price">$285</span>
+              <span class="card-explore">EXPLORE</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href="#" class="collection-card reveal">
+          <div class="card-img-wrapper">
+            <img loading="lazy" src="01-whisk-originals/lifestyle-01.png" alt="Amber Ritual" class="card-img">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">AMBER RITUAL</h3>
+            <p class="card-notes">Oud · Dark Rose · Musk · Amber</p>
+            <div class="card-footer">
+              <span class="card-price">$285</span>
+              <span class="card-explore">EXPLORE</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="#" class="collection-card reveal">
+          <div class="card-img-wrapper">
+            <img loading="lazy" src="01-whisk-originals/note-oud.png" alt="Oud Empress" class="card-img">
+          </div>
+          <div class="card-content">
+            <h3 class="card-title">OUD EMPRESS</h3>
+            <p class="card-notes">Oud · Dark Rose · Musk · Amber</p>
+            <div class="card-footer">
+              <span class="card-price">$285</span>
+              <span class="card-explore">EXPLORE</span>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="scent-story" id="story">
+    <div class="story-left">
+      <img loading="lazy" src="01-whisk-originals/lifestyle-01.png" alt="Scent Architecture Lifestyle" class="story-parallax-img" id="parallax-img">
+    </div>
+    
+    <div class="story-right">
+      <span class="label text-gold-dust">SCENT ARCHITECTURE</span>
+      <h2 class="story-headline reveal">Three Layers of Seduction.</h2>
+      
+      <div class="pyramid-container">
+        <!-- Connecting Line -->
+        <div class="pyramid-line"></div>
+        
+        <!-- Tier 1 -->
+        <div class="tier">
+          <div class="tier-img-container">
+            <img loading="lazy" src="exgif-exports/gifs/oud-float.gif" alt="Top Notes" class="tier-img">
+          </div>
+          <div class="tier-content">
+            <span class="tier-label">TOP NOTES</span>
+            <h4 class="tier-notes">Bergamot · Black Pepper · Cardamom</h4>
+            <p class="tier-desc">An intoxicating initial burst that awakens the senses and draws you closer into the mystery.</p>
+          </div>
+        </div>
+        
+        <!-- Tier 2 -->
+        <div class="tier">
+          <div class="tier-img-container">
+            <img loading="lazy" src="exgif-exports/gifs/rose-float.gif" alt="Heart Notes" class="tier-img">
+          </div>
+          <div class="tier-content">
+            <span class="tier-label">HEART NOTES</span>
+            <h4 class="tier-notes">Dark Rose · Oud Wood · Incense</h4>
+            <p class="tier-desc">The rich, complex center that reveals the true seductive character of the fragrance.</p>
+          </div>
+        </div>
+        
+        <!-- Tier 3 -->
+        <div class="tier">
+          <div class="tier-img-container">
+            <img loading="lazy" src="exgif-exports/gifs/amber-float.gif" alt="Base Notes" class="tier-img">
+          </div>
+          <div class="tier-content">
+            <span class="tier-label">BASE NOTES</span>
+            <h4 class="tier-notes">Musk · Vetiver · Amber · Sandalwood</h4>
+            <p class="tier-desc">A deep, lingering foundation that stays on the skin eternally, leaving an unforgettable trail.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Ritual Section -->
+  <section class="ritual-section" id="ritual">
+    <div class="ritual-left">
+      <img loading="lazy" src="exgif-exports/gifs/musk-float.gif" class="ritual-overlay-gif" alt="Gold Particles Overlay">
+      
+      <img loading="lazy" src="01-whisk-originals/note-oud.png" class="ritual-bg active" id="ritual-bg-1" alt="Sourcing The Rare">
+      <img loading="lazy" src="01-whisk-originals/note-rose.png" class="ritual-bg" id="ritual-bg-2" alt="The Master Blend">
+      <img loading="lazy" src="01-whisk-originals/note-musk.png" class="ritual-bg" id="ritual-bg-3" alt="Aging In Darkness">
+      <img loading="lazy" src="01-whisk-originals/note-amber.png" class="ritual-bg" id="ritual-bg-4" alt="The Final Vessel">
+    </div>
+
+    <div class="ritual-right">
+      <div class="ritual-step" data-step="1">
+        <span class="step-num text-gold-dust">01</span>
+        <h2 class="step-headline reveal">SOURCING THE RARE</h2>
+        <p class="step-desc reveal">Each ingredient is ethically sourced from the world's most remote regions — oud from Southeast Asia, roses from Grasse, musk from the Himalayan highlands.</p>
+      </div>
+
+      <div class="ritual-step" data-step="2">
+        <span class="step-num text-gold-dust">02 / THE MASTER BLEND</span>
+        <h2 class="step-headline reveal">THE MASTER BLEND</h2>
+        <p class="step-desc reveal">Master perfumers combine these raw elements in precise, guarded ratios, balancing the bold intensity with subtle, delicate layers.</p>
+      </div>
+
+      <div class="ritual-step" data-step="3">
+        <span class="step-num text-gold-dust">03 / AGING IN DARKNESS</span>
+        <h2 class="step-headline reveal">AGING IN DARKNESS</h2>
+        <p class="step-desc reveal">The blend is left to mature in absolute darkness, allowing the diverse notes to intertwine and develop their full, rich character.</p>
+      </div>
+
+      <div class="ritual-step" data-step="4">
+        <span class="step-num text-gold-dust">04 / THE FINAL VESSEL</span>
+        <h2 class="step-headline reveal">THE FINAL VESSEL</h2>
+        <p class="step-desc reveal">Captured in our signature obsidian glass, each bottle perfectly preserves the liquid gold within, ready for its unveiling.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="testimonials-container">
+      <div class="quote-mark">“</div>
+      
+      <div class="testimonial-slider">
+        <!-- Quote 1 -->
+        <div class="testimonial-slide active">
+          <p class="testimonial-text reveal">"There are scents you wear and scents that wear you. This is the latter."</p>
+          <p class="testimonial-author">— Amara K., Dubai</p>
+        </div>
+        
+        <!-- Quote 2 -->
+        <div class="testimonial-slide">
+          <p class="testimonial-text reveal">"I received three compliments within an hour of applying. This is extraordinary."</p>
+          <p class="testimonial-author">— James T., London</p>
+        </div>
+        
+        <!-- Quote 3 -->
+        <div class="testimonial-slide">
+          <p class="testimonial-text reveal">"Like wearing a secret no one else can read."</p>
+          <p class="testimonial-author">— Sophia R., New York</p>
+        </div>
+      </div>
+      
+      <div class="testimonial-dots">
+        <span class="dot active" data-index="0"></span>
+        <span class="dot" data-index="1"></span>
+        <span class="dot" data-index="2"></span>
+      </div>
+    </div>
+    
+    <!-- Press Marquee -->
+    <div class="press-marquee">
+      <div class="marquee-content">
+        <span>VOGUE · HARPERS BAZAAR · WALLPAPER · ELLE · GQ · ESQUIRE ·&nbsp;</span>
+        <span>VOGUE · HARPERS BAZAAR · WALLPAPER · ELLE · GQ · ESQUIRE ·&nbsp;</span>
+        <span>VOGUE · HARPERS BAZAAR · WALLPAPER · ELLE · GQ · ESQUIRE ·&nbsp;</span>
+        <span>VOGUE · HARPERS BAZAAR · WALLPAPER · ELLE · GQ · ESQUIRE ·&nbsp;</span>
+      </div>
+      <div class="marquee-content" aria-hidden="true">
+        <span>VOGUE · HARPERS BAZAAR · WALLPAPER · ELLE · GQ · ESQUIRE ·&nbsp;</span>
+        <span>VOGUE · HARPERS BAZAAR · WALLPAPER · ELLE · GQ · ESQUIRE ·&nbsp;</span>
+        <span>VOGUE · HARPERS BAZAAR · WALLPAPER · ELLE · GQ · ESQUIRE ·&nbsp;</span>
+        <span>VOGUE · HARPERS BAZAAR · WALLPAPER · ELLE · GQ · ESQUIRE ·&nbsp;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-texture"></div>
+    <div class="footer-content">
+      
+      <div class="footer-top">
+        <!-- Column 1 -->
+        <div class="footer-col brand-col">
+          <div class="footer-logo">
+            <span class="logo-text" style="font-size: 48px;">JK</span>
+            <span class="logo-subtext">LUXURY SCENT</span>
+          </div>
+          <p class="footer-tagline">Born from darkness. Worn with intention.</p>
+        </div>
+        
+        <!-- Column 2 -->
+        <div class="footer-col nav-col">
+          <span class="footer-label">EXPLORE</span>
+          <ul class="footer-links">
+            <li><a href="#">Collection</a></li>
+            <li><a href="#">Our Story</a></li>
+            <li><a href="#">The Ritual</a></li>
+            <li><a href="#">Gifting</a></li>
+            <li><a href="#">Wholesale</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </div>
+        
+        <!-- Column 3 -->
+        <div class="footer-col contact-col">
+          <span class="footer-label">CONNECT</span>
+          <a href="mailto:hello@jkluxuryscent.com" class="footer-email">hello@jkluxuryscent.com</a>
+          
+          <div class="social-icons">
+            <a href="#" class="social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+              </svg>
+            </a>
+            <a href="#" class="social-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 20l4-9"></path>
+                <path d="M10.5 13.5a2.5 2.5 0 0 1 3.5-3"></path>
+              </svg>
+            </a>
+          </div>
+
+          <div class="newsletter-box">
+            <label class="newsletter-label">Subscribe to the obsession:</label>
+            <form class="newsletter-form">
+              <input type="email" placeholder="YOUR EMAIL" class="newsletter-input" required>
+              <button type="submit" class="newsletter-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-divider"></div>
+      
+      <div class="footer-bottom">
+        <p class="copyright">© 2024 JK Luxury Scent. All rights reserved.</p>
+        <p class="legal-links">Privacy Policy · Terms · Shipping</p>
+      </div>
+      
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script>
+    const navbar = document.getElementById('navbar');
+    let isNavTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!isNavTicking) {
+        window.requestAnimationFrame(() => {
+          if (window.scrollY > 80) {
+            navbar.classList.add('scrolled');
+          } else {
+            navbar.classList.remove('scrolled');
+          }
+          isNavTicking = false;
+        });
+        isNavTicking = true;
+      }
+    });
+
+    // Intersection Observer for animations
+    const observerOptions = {
+      threshold: 0.3
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (entry.target.classList.contains('brand-statement')) {
+            entry.target.querySelector('.statement-quote').classList.add('is-visible');
+            entry.target.querySelectorAll('.gold-line').forEach(line => line.classList.add('is-visible'));
+          } else if (entry.target.classList.contains('pyramid-container')) {
+            const tiers = entry.target.querySelectorAll('.tier');
+            tiers.forEach((tier, index) => {
+              setTimeout(() => {
+                tier.classList.add('is-visible');
+              }, index * 300);
+            });
+          }
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    const statementSection = document.querySelector('.brand-statement');
+    if (statementSection) observer.observe(statementSection);
+
+    const pyramidContainer = document.querySelector('.pyramid-container');
+    if (pyramidContainer) observer.observe(pyramidContainer);
+
+    // Parallax logic (Bounded to prevent overlap clipping)
+    let isParallaxTicking = false;
+    const parallaxImg = document.getElementById('parallax-img');
+    
+    window.addEventListener('scroll', () => {
+      if (!isParallaxTicking && parallaxImg) {
+        window.requestAnimationFrame(() => {
+          const rect = parallaxImg.parentElement.getBoundingClientRect();
+          const viewportHeight = window.innerHeight;
+          if (rect.top <= viewportHeight && rect.bottom >= 0) {
+            const progress = (viewportHeight - rect.top) / (viewportHeight + rect.height);
+            const yPosOffset = (progress - 0.5) * 15; // smooth % based bounded translation
+            parallaxImg.style.transform = `translateY(${yPosOffset}%)`;
+          }
+          isParallaxTicking = false;
+        });
+        isParallaxTicking = true;
+      }
+    });
+
+    // Ritual scroll observer
+    const ritualObserverOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.5
+    };
+
+    const ritualObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const step = entry.target.getAttribute('data-step');
+          document.querySelectorAll('.ritual-bg').forEach(bg => bg.classList.remove('active'));
+          const activeImg = document.getElementById(`ritual-bg-${step}`);
+          if (activeImg) activeImg.classList.add('active');
+        }
+      });
+    }, ritualObserverOptions);
+
+    document.querySelectorAll('.ritual-step').forEach(step => {
+      ritualObserver.observe(step);
+    });
+
+    // Testimonial Logic
+    const testimonials = document.querySelectorAll('.testimonial-slide');
+    const dots = document.querySelectorAll('.dot');
+    let currentTestimonial = 0;
+    let testimonialInterval;
+
+    function showTestimonial(index) {
+      testimonials.forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.add('active');
+          dots[i].classList.add('active');
+        } else {
+          slide.classList.remove('active');
+          dots[i].classList.remove('active');
+        }
+      });
+    }
+
+    function startTestimonialTimer() {
+      clearInterval(testimonialInterval);
+      testimonialInterval = setInterval(() => {
+        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+        showTestimonial(currentTestimonial);
+      }, 5000);
+    }
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentTestimonial = index;
+        showTestimonial(currentTestimonial);
+        startTestimonialTimer(); // Reset timer on manual click
+      });
+    });
+
+    startTestimonialTimer();
+
+    // Custom Cursor Logic
+    const cursorDot = document.getElementById('cursor-dot');
+    const cursorRing = document.getElementById('cursor-ring');
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let ringX = mouseX, ringY = mouseY;
+    const useCustomCursor = window.matchMedia('(pointer: fine)').matches && !('ontouchstart' in window);
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX; mouseY = e.clientY;
+      if (useCustomCursor && cursorDot) {
+        cursorDot.style.left = `${mouseX}px`;
+        cursorDot.style.top  = `${mouseY}px`;
+      }
+    }, { passive: true });
+
+    if (!useCustomCursor) {
+      if (cursorDot)  cursorDot.style.display  = 'none';
+      if (cursorRing) cursorRing.style.display = 'none';
+    }
+
+    // Hover states for links and buttons
+    const interactiveElements = document.querySelectorAll('a, button, .dot, .nav-icon, input, textarea');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => { if (cursorRing) { cursorRing.style.width='54px'; cursorRing.style.height='54px'; } });
+      el.addEventListener('mouseleave', () => { if (cursorRing) { cursorRing.style.width='36px'; cursorRing.style.height='36px'; } });
+    });
+
+    // Canvas Cursor Line Trail Effect
+    const cursorCanvas = document.createElement('canvas');
+    cursorCanvas.id = 'cursor-canvas';
+    Object.assign(cursorCanvas.style, { position:'fixed', top:'0', left:'0', width:'100vw', height:'100vh', pointerEvents:'none', zIndex:'9997' });
+    document.body.prepend(cursorCanvas);
+
+    const ctx = cursorCanvas.getContext('2d');
+    const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    const lines = [];
+    
+    const E = { friction: 0.5, trails: 12, size: 30, dampening: 0.25, tension: 0.98 }; // Reduced for perf
+
+    function Node() {
+      this.x = 0;
+      this.y = 0;
+      this.vy = 0;
+      this.vx = 0;
+    }
+
+    function Line(config) {
+      this.spring = config.spring + 0.1 * Math.random() - 0.02;
+      this.friction = E.friction + 0.01 * Math.random() - 0.002;
+      this.nodes = [];
+      for (let n = 0; n < E.size; n++) {
+        let t = new Node();
+        t.x = pos.x;
+        t.y = pos.y;
+        this.nodes.push(t);
+      }
+    }
+
+    Line.prototype.update = function () {
+      let e = this.spring;
+      let t = this.nodes[0];
+      t.vx += (pos.x - t.x) * e;
+      t.vy += (pos.y - t.y) * e;
+      for (let n, i = 0, a = this.nodes.length; i < a; i++) {
+        t = this.nodes[i];
+        if (i > 0) {
+          n = this.nodes[i - 1];
+          t.vx += (n.x - t.x) * e;
+          t.vy += (n.y - t.y) * e;
+          t.vx += n.vx * E.dampening;
+          t.vy += n.vy * E.dampening;
+        }
+        t.vx *= this.friction;
+        t.vy *= this.friction;
+        t.x += t.vx;
+        t.y += t.vy;
+        e *= E.tension;
+      }
+    };
+
+    Line.prototype.draw = function () {
+      let e, t;
+      let n = this.nodes[0].x;
+      let i = this.nodes[0].y;
+      ctx.beginPath();
+      ctx.moveTo(n, i);
+      let a;
+      for (a = 1; a < this.nodes.length - 2; a++) {
+        e = this.nodes[a];
+        t = this.nodes[a + 1];
+        n = 0.5 * (e.x + t.x);
+        i = 0.5 * (e.y + t.y);
+        ctx.quadraticCurveTo(e.x, e.y, n, i);
+      }
+      e = this.nodes[a];
+      t = this.nodes[a + 1];
+      ctx.quadraticCurveTo(e.x, e.y, t.x, t.y);
+      ctx.stroke();
+      ctx.closePath();
+    };
+
+    function onMousemove(e) {
+      const cx = e.touches ? e.touches[0].clientX : e.clientX;
+      const cy = e.touches ? e.touches[0].clientY : e.clientY;
+      pos.x = cx; pos.y = cy;
+    }
+    document.addEventListener('mousemove', onMousemove, { passive: true });
+    document.addEventListener('touchmove', onMousemove, { passive: true });
+    document.addEventListener('touchstart', onMousemove, { passive: true });
+
+    for (let i = 0; i < E.trails; i++) {
+      lines.push(new Line({ spring: 0.4 + (i / E.trails) * 0.025 }));
+    }
+
+    function resizeCanvas() {
+      ctx.canvas.width  = window.innerWidth;
+      ctx.canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', () => { clearTimeout(window._rcTimer); window._rcTimer = setTimeout(resizeCanvas, 150); }, { passive: true });
+    resizeCanvas();
+
+    let colorPhase = Math.random() * 2 * Math.PI;
+
+    // Smooth Scroll (Lenis)
+    const lenis = new Lenis({
+      duration: 0.75,
+      easing: (t) => 1 - Math.pow(1 - t, 3), // easeOutCubic — snappy
+    });
+    window.__lenis = lenis;
+
+    // ── Bg Particles Setup ──────────────────────
+    const bgCanvas = document.createElement('canvas');
+    bgCanvas.id = 'bg-particles';
+    Object.assign(bgCanvas.style, { position:'fixed', top:'0', left:'0', width:'100vw', height:'100vh', pointerEvents:'none', zIndex:'0' });
+    document.body.prepend(bgCanvas);
+    const bgCtx = bgCanvas.getContext('2d');
+    let bgParticles = [];
+    let bgFrame = 0;
+
+    function initBgParticles() {
+      bgCanvas.width  = window.innerWidth;
+      bgCanvas.height = window.innerHeight;
+      bgParticles = [];
+      const count = window.innerWidth < 768 ? 16 : 28; // Fewer = faster
+      for (let i = 0; i < count; i++) {
+        bgParticles.push({
+          x: Math.random() * bgCanvas.width,
+          y: Math.random() * bgCanvas.height,
+          radius: Math.random() * 1.4 + 0.3,
+          vx: (Math.random() - 0.5) * 0.12,
+          vy: -(Math.random() * 0.28 + 0.05),
+          alpha: Math.random() * 0.5 + 0.08
+        });
+      }
+    }
+    window.addEventListener('resize', () => { clearTimeout(window._bpTimer); window._bpTimer = setTimeout(initBgParticles, 200); }, { passive: true });
+    initBgParticles();
+
+    // ── SINGLE MASTER RAF LOOP — all animations share one tick ──
+    function masterTick(time) {
+      // 1. Lenis
+      lenis.raf(time);
+
+      // 2. Cursor ring lerp
+      if (useCustomCursor && cursorRing) {
+        ringX += (mouseX - ringX) * 0.12;
+        ringY += (mouseY - ringY) * 0.12;
+        cursorRing.style.left = `${ringX}px`;
+        cursorRing.style.top  = `${ringY}px`;
+      }
+
+      // 3. Canvas ribbon (only on non-touch)
+      if (useCustomCursor) {
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        ctx.globalCompositeOperation = 'lighter';
+        colorPhase += 0.005;
+        const hue = 39 + Math.sin(colorPhase) * 7;
+        ctx.strokeStyle = `hsla(${hue},55%,52%,0.15)`;
+        ctx.lineWidth = 1.25;
+        for (let i = 0; i < lines.length; i++) { lines[i].update(); lines[i].draw(); }
+      }
+
+      // 4. Bg particles (every 2nd frame)
+      bgFrame++;
+      if (bgFrame % 2 === 0) {
+        bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
+        bgCtx.fillStyle = '#C9A84C';
+        bgParticles.forEach(p => {
+          bgCtx.globalAlpha = p.alpha;
+          bgCtx.beginPath();
+          bgCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          bgCtx.fill();
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0) p.x = bgCanvas.width;
+          else if (p.x > bgCanvas.width) p.x = 0;
+          if (p.y < 0) p.y = bgCanvas.height;
+        });
+        bgCtx.globalAlpha = 1;
+      }
+
+      requestAnimationFrame(masterTick);
+    }
+    requestAnimationFrame(masterTick);
+
+    // Scroll Reveal Observer
+    const scrollRevealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          scrollRevealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.reveal').forEach(el => scrollRevealObserver.observe(el));
+
+    // Active Section Observer for Nav
+    const watchSections = document.querySelectorAll('section[id]');
+    const watchNavLinks = document.querySelectorAll('.nav-link');
+
+    const activeNavObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const activeId = entry.target.getAttribute('id');
+          watchNavLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${activeId}`) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }, { threshold: 0.2, rootMargin: "-10% 0px -80% 0px" });
+
+    watchSections.forEach(sec => activeNavObserver.observe(sec));
+
+    // Preloader Sequence
+    const preloader = document.getElementById('preloader');
+    const p_jk = document.getElementById('preloader-jk');
+    const p_line = document.getElementById('preloader-line');
+    const p_sub = document.getElementById('preloader-sub');
+
+    // 0ms: Initial state is already set in CSS/HTML
+    
+    // 300ms: JK fades in
+    setTimeout(() => {
+      p_jk.classList.add('show');
+    }, 300);
+
+    // 1500ms: Gold line draws right
+    setTimeout(() => {
+      p_line.classList.add('draw');
+    }, 1500);
+
+    // 2200ms: LUXURY SCENT expands
+    setTimeout(() => {
+      p_sub.classList.add('expand');
+    }, 2200);
+
+    // 3500ms: Slide UP off screen
+    setTimeout(() => {
+      preloader.classList.add('slide-up');
+    }, 3500);
+
+    // 4200ms: Remove preloader, trigger loaded class
+    setTimeout(() => {
+      preloader.remove();
+      document.body.classList.add('loaded');
+    }, 4200);
+
+    // Back to Top functionality
+    const backToTopBtn = document.createElement('button');
+    backToTopBtn.id = 'back-to-top';
+    backToTopBtn.className = 'back-to-top';
+    backToTopBtn.innerHTML = `
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 19V5M5 12l7-7 7 7"/>
+      </svg>
+    `;
+    document.body.appendChild(backToTopBtn);
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 500) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      if(typeof lenis !== 'undefined') {
+        lenis.scrollTo(0, { duration: 1.2 });
+      } else {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    });
+
+    // Mobile Hamburger Overlay
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileClose = document.getElementById('mobile-close');
+    const mobileOverlay = document.getElementById('mobile-overlay');
+
+    if(mobileToggle && mobileClose && mobileOverlay) {
+      mobileToggle.addEventListener('click', () => {
+        mobileOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Lock scroll
+      });
+
+      mobileClose.addEventListener('click', () => {
+        mobileOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
+
+    // Page Transition logic (Gold bar wipe)
+    window.addEventListener('pageshow', (event) => {
+      const pTrans = document.getElementById('page-transition');
+      if (pTrans) {
+        pTrans.style.transformOrigin = 'bottom';
+        pTrans.classList.add('hidden-wipe');
+        setTimeout(() => { pTrans.style.display = 'none'; }, 600);
+      }
+    });
+
+    document.querySelectorAll('a[href$=".html"], .cart-container').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href') || 'cart.html';
+        if(href.startsWith('#')) return;
+        
+        e.preventDefault();
+        const pTrans = document.getElementById('page-transition');
+        if (pTrans) {
+          pTrans.style.display = 'block';
+          pTrans.style.transformOrigin = 'top';
+          pTrans.classList.remove('hidden-wipe');
+          pTrans.classList.add('active-wipe');
+          setTimeout(() => {
+            window.location.href = href;
+          }, 500); // 0.5s transition
+        } else {
+          window.location.href = href;
+        }
+      });
+    });
+
+  </script>
+</body>
+</html>

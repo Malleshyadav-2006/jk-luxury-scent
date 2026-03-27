@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noir Absolu — JK Luxury Scent</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,200;0,300;1,300&family=Jost:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Specific product styles */
+    .product-hero {
+      padding: 180px 0 100px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      min-height: 80vh;
+      align-items: center;
+    }
+    .product-img-col {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+    .product-img-main {
+      width: 100%;
+      max-width: 500px;
+      filter: drop-shadow(0 20px 50px rgba(0,0,0,0.5));
+    }
+    .product-info-col {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .product-label {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.5em;
+      color: var(--gold-dust);
+      text-transform: uppercase;
+    }
+    .product-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 72px;
+      font-weight: 200;
+      color: var(--ivory-smoke);
+      line-height: 1.1;
+    }
+    .product-meta {
+      display: flex;
+      gap: 40px;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      color: var(--gold-dust);
+      opacity: 0.8;
+    }
+    .product-desc {
+      font-family: 'Jost', sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--ivory-smoke);
+      opacity: 0.7;
+      max-width: 500px;
+    }
+    .product-price {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      color: var(--gold-dust);
+    }
+    .notes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 20px;
+    }
+    .note-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .note-title {
+      font-size: 9px;
+      letter-spacing: 0.2em;
+      color: var(--gold-dust);
+      opacity: 0.6;
+      text-transform: uppercase;
+    }
+    .note-val {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      color: var(--ivory-smoke);
+    }
+
+    @media (max-width: 992px) {
+      .product-hero { grid-template-columns: 1fr; gap: 40px; padding-top: 140px; }
+      .product-name { font-size: 52px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="cursor-dot"></div>
+  <div id="cursor-ring"></div>
+  <div id="page-transition" class="page-transition"></div>
+
+  <nav id="navbar" class="navbar scrolled">
+    <div class="nav-left">
+      <a href="index.html" style="text-decoration:none;display:flex;align-items:center;gap:12px;">
+        <span class="logo-text">JK</span>
+        <span class="logo-subtext">LUXURY SCENT</span>
+      </a>
+    </div>
+    <div class="nav-center">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="collection.html" class="nav-link">Collection</a>
+      <a href="story.html" class="nav-link">Our Story</a>
+      <a href="ritual.html" class="nav-link">The Ritual</a>
+      <a href="gifting.html" class="nav-link">Gifts</a>
+    </div>
+    <div class="nav-right">
+      <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+      <div class="cart-container" onclick="window.location.href='cart.html'" style="cursor:pointer;">
+        <svg class="nav-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+        <span class="cart-badge">0</span>
+      </div>
+      <button id="mobile-toggle" class="nav-icon mobile-toggle-btn" style="background:none;border:none;padding:0;cursor:pointer;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      </button>
+    </div>
+  </nav>
+
+  <section class="container product-hero">
+    <div class="product-img-col reveal">
+      <img src="exgif-exports/gifs/bottle-float.gif" alt="Noir Absolu" class="product-img-main">
+    </div>
+    
+    <div class="product-info-col reveal" style="transition-delay:0.2s">
+      <span class="product-label">EAU DE PARFUM</span>
+      <h1 class="product-name">Noir Absolu</h1>
+      
+      <div class="product-meta">
+        <span>50ML / 1.7 FL.OZ</span>
+        <span>GENDER NEUTRAL</span>
+      </div>
+      
+      <p class="product-desc">
+        A profound exploration of darkness and light. Noir Absolu is our signature obsession, 
+        crafted around the world's most precious aged Oud and balanced with the haunting 
+        elegance of midnight rose. It doesn't just linger; it leaves a legacy.
+      </p>
+      
+      <div class="notes-grid">
+        <div class="note-item">
+          <span class="note-title">TOP</span>
+          <span class="note-val">Saffron · Cardamom</span>
+        </div>
+        <div class="note-item">
+          <span class="note-title">HEART</span>
+          <span class="note-val">Oud · Dark Rose</span>
+        </div>
+        <div class="note-item">
+          <span class="note-title">BASE</span>
+          <span class="note-val">Leather · Amber · Musk</span>
+        </div>
+        <div class="note-item">
+          <span class="note-title">SILAGE</span>
+          <span class="note-val">Exceptional / Everlasting</span>
+        </div>
+      </div>
+      
+      <div class="product-price" style="margin-top:20px;">$285.00</div>
+      
+      <button class="btn-luxury" data-add-cart
+        data-id="noir-absolu"
+        data-name="Noir Absolu"
+        data-price="285"
+        data-img="01-whisk-originals/collection-flatlay.png"
+        style="width: 100%; margin-top: 10px;">
+        ADD TO CART
+      </button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-texture"></div>
+    <div class="footer-content">
+      <div class="footer-top">
+        <div class="footer-col footer-logo">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:48px;color:var(--gold-dust);font-weight:300;line-height:1;">JK</span>
+          <span style="font-size:9px;letter-spacing:0.3em;color:var(--ivory-smoke);opacity:0.5;margin-top:4px;display:block;">LUXURY SCENT</span>
+        </div>
+        <div class="footer-col">
+          <span class="footer-label">EXPLORE</span>
+          <a href="index.html" class="footer-link">Home</a>
+          <a href="collection.html" class="footer-link">Collection</a>
+          <a href="story.html" class="footer-link">Our Story</a>
+          <a href="ritual.html" class="footer-link">The Ritual</a>
+          <a href="gifting.html" class="footer-link">Gifting</a>
+        </div>
+        <div class="footer-col" style="text-align:right;">
+          <span class="footer-label">CONNECT</span>
+          <a href="mailto:hello@jkluxuryscent.com" class="footer-link">hello@jkluxuryscent.com</a>
+        </div>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2024 JK Luxury Scent.</span>
+        <div class="footer-legal">
+          <a href="#" class="footer-legal-link">Privacy Policy</a>
+          <span class="footer-dot">·</span>
+          <a href="#" class="footer-legal-link">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script src="shared.js"></script>
+</body>
+</html>
